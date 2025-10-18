@@ -17,7 +17,6 @@ The Discord bot is set up to work alongside a locally deployed FTP server.
 `start.sh` handles starting both the FTP server and the Discord bot. In order to use the `start.sh` script, `babyftp.exe` is needed and `BABY_FTP_PATH` must be set. 
 
 ## Future Work
-- [ ] Enabling configuration of alert parameters through Discord commands
 - [ ] More robust error handling and logging mechanisms
 - [ ] More detailed alert messages
 - [ ] Support for multiple users or channels for alerts
