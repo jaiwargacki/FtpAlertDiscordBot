@@ -1,15 +1,13 @@
 #!/bin/bash
 
-FTP_DIR="./data"
+source .env
 
-if [ ! -d "$FTP_DIR" ]; then
+if [ ! -d "${DATA_DIR}" ]; then
   echo "Creating data directory..."
-  mkdir -p "$FTP_DIR"
+  mkdir -p "${DATA_DIR}"
 else
   echo "Data directory already exists."
 fi
-
-source .env
 
 echo "Starting FTP server..."
 "${BABY_FTP_PATH}" &>/dev/null &

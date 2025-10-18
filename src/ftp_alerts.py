@@ -11,7 +11,7 @@ from camera_mapping import get_camera_name
 load_dotenv()
 TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 ROOT_USER_ID = int(os.getenv('USER_ID'))
-DATA_DIR = './data'
+DATA_DIR =  os.getenv('DATA_DIR')
 
 # Bot Set Up
 intents = discord.Intents.default()
