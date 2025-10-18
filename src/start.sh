@@ -13,3 +13,6 @@ source .env
 
 echo "Starting FTP server..."
 "${BABY_FTP_PATH}" &>/dev/null &
+
+echo "Starting Discord bot..."
+python ftp_alerts.py
