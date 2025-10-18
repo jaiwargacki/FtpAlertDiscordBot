@@ -18,5 +18,4 @@ The Discord bot is set up to work alongside a locally deployed FTP server.
 
 ## Future Work
 - [ ] More robust error handling and logging mechanisms
-- [ ] More detailed alert messages
 - [ ] Support for multiple users or channels for alerts

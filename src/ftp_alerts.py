@@ -5,6 +5,7 @@ from discord.ext import tasks as discordTasks
 from dotenv import load_dotenv
 
 from helper import log_message, log
+from camera_mapping import get_camera_name
 
 # Load environment variables
 load_dotenv()
@@ -28,7 +29,7 @@ async def on_ready():
 
     @discordTasks.loop(minutes=1)
     async def periodic_check():
-        await checkFileAlerts()
+        await check_file_alerts()
 
     periodic_check.start()
 
@@ -36,14 +37,15 @@ async def on_ready():
 async def on_message(message):
     log_message(message)
 
-async def checkFileAlerts():
+async def check_file_alerts():
     files = os.listdir(DATA_DIR)
     if files:
         user = await client.fetch_user(ROOT_USER_ID)
         for file in files:
             if send_message:
-                discordFile = discord.File(os.path.join(DATA_DIR, file))
-                await user.send(f'New alert: {file}', file=discordFile)
+                discord_file = discord.File(os.path.join(DATA_DIR, file))
+                camera_name = get_camera_name(file)
+                await user.send(f'New alert from {camera_name}', file=discord_file)
             os.remove(os.path.join(DATA_DIR, file))
 
 @tree.command(name='togglealerts', description='Toggle FTP alerts on or off')
